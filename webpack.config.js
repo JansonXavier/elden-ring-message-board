@@ -7,10 +7,14 @@ module.exports = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   plugins: [new HtmlWebpackPlugin({
     template: "./client/index.html",
   })],
+  resolve: {
+    modules: [__dirname, "src", "node_modules"],
+    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+  },
   module: {
     rules: [
       {
@@ -35,7 +39,7 @@ module.exports = {
   },
   devServer: {
     proxy: {
-      "/home": "http://localhost:3000"
+      "/": "http://localhost:3000"
     }
   }
 }

@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
+  const navigate = useNavigate();
+
+  const handleNav = (str) => {
+    navigate('/' + str);
+  }
+
   return (
     <nav>
-      <p>Profile</p>
+      <button onClick={() => handleNav('profile')}>Profile</button>
       <p>Mobs</p>
       <p>Builds</p>
       <p>Lore</p>
