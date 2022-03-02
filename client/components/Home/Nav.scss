@@ -1,0 +1,25 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #333;
+  color: #DDD
+}
+
+.categories {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+button {
+  width: 10%;
+  height: 5vh;
+  background-color: #333;
+  border: none;
+  color: #DDD;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #555;
+  }
+}

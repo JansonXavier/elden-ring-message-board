@@ -7,10 +7,22 @@ const apiRouter = require('./routes/api');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use('/', apiRouter);
+app.use('/api', apiRouter);
 
-app.all('*', (req, res) => {
+app.use((req, res) => {
   return res.redirect('/')
+})
+
+app.use((err, req, res, next) => {
+  const defaultErr ={
+    log: 'Express error handler caught unknown middleware error',
+    status: 400,
+    message: { err: 'An error occurred' }, 
+  };
+
+  const errObj = { ...defaultErr, ...err};
+  console.log(errObj.log);
+  res.status(errObj.status).send(errObj.message);
 })
 
 app.listen(PORT, () => {
