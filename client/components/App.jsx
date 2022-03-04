@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { PathContext } from '../pathDetails'
+import { PathContext } from '../contexts/pathDetails'
 import Login from "./Login/Login";
 import Home from "./Home/Home";
 import ThreadList from "./Home/Main/ThreadList";
-import Messages from "./Home/Main/Messages";
+import Messages from "./Home/Main/Messages/Messages";
 import Profile from "./Profile/Profile";
 
 const App = () => {

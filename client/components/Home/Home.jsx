@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { CategoryContext } from '../../categoryDetails';
+import { CategoryContext } from '../../contexts/categoryDetails';
+import { ThreadContext } from '../../contexts/threadDetails';
+import { CurThreadContext } from '../../contexts/curThreadDetails'
 import Nav from "./Nav";
 import Main from "./Main/Main";
 import './Home.css';
 
 const Home = () => {
-  const [category, setCategory] = useState('Mobs');
-  const categoryState = [category, setCategory];
+  const [category, setCategory] = useState('Enemies');
+  const [threads, setThreads] = useState([]);
+  const [curThread, setCurThread] = useState('');
 
   useEffect(() => {
-    const address = '/api/' + category
-    console.log(address)
+    const address = '/api/category/' + category
+
     fetch(address)
-    .then(res => console.log(res))
+    .then(res => res.json())
+    .then(data => {
+      setThreads(data);
+    })
     .catch(err => console.log(err));
   }, [category])
 
   return (
-    <CategoryContext.Provider value={categoryState}>
-      <div className="home">
-        <Nav />
-        <Main />
-      </div>
+    <CategoryContext.Provider value={[category, setCategory]}>
+      <ThreadContext.Provider value={[threads, setThreads]}>
+        <CurThreadContext.Provider value={[curThread, setCurThread]}>
+          <div className="home">
+          <Nav />
+          <Main />
+        </div>
+        </CurThreadContext.Provider>
+      </ThreadContext.Provider>
     </CategoryContext.Provider>
   )
 }

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 dotenv.config();
 
 const MONGO_URI = process.env.DB_URI
@@ -16,35 +16,25 @@ mongoose.connect(MONGO_URI, {
 
 const Schema = mongoose.Schema;
 
-// sets a schema for the 'categories' collection
-const categorySchema = new Schema({
-  name: {type: String, required: true},
-  thread_id: {
-    // type of ObjectId makes this behave like a foreign key referencing the 'thread' collection
-    type: Schema.Types.ObjectId,
-    ref: 'thread'
-  }
-});
-// creates a model for the 'categories' collection that will be part of the export
-const Category = mongoose.model('category', categorySchema);
-
-const threadSchema = new Schema({
-  topic: {type: String, required: true},
-  created_by: {type: String, required: true},
-  msgs: {type: Number, required: true},
-  last_post: {type: String, required: true},
-});
-const Thread = mongoose.model('thread', threadSchema);
-
+// Messages
 const messageSchema = new Schema({
   message: {type: String, required: true},
   author: {type: String, required: true},
-  date: {type: String, required: true}
+  date: {type: String, required: true},
+  thread: {type: Schema.Types.ObjectId, ref: 'thread'}
 });
 const Message = mongoose.model('message', messageSchema);
 
+// Threads
+const threadSchema = new Schema({
+  topic: {type: String, required: true},
+  created_by: {type: String, required: true},
+  num_msgs: {type: Number, required: true},
+  category: {type: String, required: true},
+});
+const Thread = mongoose.model('thread', threadSchema);
+
 module.exports = {
-  Category,
   Thread,
   Message
 }

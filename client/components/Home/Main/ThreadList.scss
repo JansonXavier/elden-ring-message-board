@@ -1,10 +1,6 @@
-p {
-  border: 1px solid black
-}
-
 #thread-header {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-auto-flow: column;
   background-color: #222;
   color: #FFF;
 }

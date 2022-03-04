@@ -5,9 +5,11 @@ import './Main.css'
 const Main = () => {
   const str = 'test';
 
+  
+
   return (
     <main>
-      <Outlet this={str}/>
+      <Outlet />
     </main>
   )
 }

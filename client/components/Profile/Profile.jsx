@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { PathContext } from '../../pathDetails'
+import { PathContext } from '../../contexts/pathDetails'
 import './Profile.scss'
 
 const Profile = () => {

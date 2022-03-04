@@ -1,0 +1,12 @@
+.threadItem {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  cursor: pointer;
+  margin: 2px 0;
+}
+
+.delete {
+  background-color: red;
+  margin: auto;
+  width: auto;
+}

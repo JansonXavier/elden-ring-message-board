@@ -1,0 +1,42 @@
+#message-container {
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+}
+
+.message-box {
+  border: 3px solid lightblue;
+  width: 80%;
+  height: 500px;
+  background-color: lightgray;
+  overflow-y: scroll;
+  margin: auto;
+}
+
+#message-input {
+  width: 80%;
+  margin: auto;
+}
+
+#message-button {
+  margin: auto;
+}
+
+.msg {
+  width: 100%;
+  background-color: rgba(26, 117, 126, 0.534);
+  border: 1px solid rgb(0, 0, 0);
+  text-align: start;
+  margin-bottom: 2px;
+}
+
+.message-author {
+  font-size: 17px;
+  display: inline;
+  margin-right: 80%
+}
+
+.message-date {
+  font-size: 17px;
+  display: inline;
+}
