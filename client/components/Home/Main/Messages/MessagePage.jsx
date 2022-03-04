@@ -3,7 +3,7 @@ import { CurThreadContext } from "../../../../contexts/curThreadDetails";
 import ThreadItem from "../ThreadItem";
 import MessageBox from './MessageBox';
 import InputField from "./InputField";
-import './Messages.css'
+import './MessagePage.css'
 
 const Messages = () => {
   const [mainThread, setMainThread] = useState(null);

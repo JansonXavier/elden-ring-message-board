@@ -1,6 +1,6 @@
 #thread-header {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 25%);
   background-color: #222;
   color: #FFF;
 }

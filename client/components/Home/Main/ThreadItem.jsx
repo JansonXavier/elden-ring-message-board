@@ -9,19 +9,14 @@ const ThreadItem = (props) => {
   const setCurThread = useContext(CurThreadContext)[1];
 
   return (
-    <div 
-      className='threadItem'
-      style={{backgroundColor: props.colour % 2 ? '#888' : '#999'}}
-      onClick={() => {
-        setPath('/home/messages')
-        setCurThread(_id)
-      }}
-    >
-      <p>{topic}</p>
-      <p>{created_by}</p>
-      <p>{num_msgs}</p>
+    <>
+    <div className='thread-item' style={{backgroundColor: props.colour % 2 ? '#888' : '#999'}}>
+      <p className='thread-topic' onClick={() => {setPath('/home/messages'); setCurThread(_id)}}>{topic}</p>
+      <p className='thread-author'>{created_by}</p>
+      <p className='thread-num-msgs'>{num_msgs}</p>
       <button className='delete'>Delete</button>
     </div>
+    </>
   )
 }
 

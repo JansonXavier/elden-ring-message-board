@@ -1,12 +1,25 @@
-.threadItem {
+.thread-item {
   display: grid;
   grid-template-columns: repeat(4, 25%);
-  cursor: pointer;
   margin: 2px 0;
 }
 
+.thread-item {
+  p {
+    &:hover {
+      cursor: pointer;
+      color: rgb(38, 38, 189);
+      text-decoration: underline;
+    }
+  }
+}
+
 .delete {
-  background-color: red;
+  background-color: #555;
   margin: auto;
   width: auto;
+
+  &:hover {
+    background-color: red;
+  }
 }

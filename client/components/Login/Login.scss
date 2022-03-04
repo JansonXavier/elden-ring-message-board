@@ -6,13 +6,24 @@
 }
 
 .login-block {
-  display: inline-block;
+  display: grid;
   position: relative;
   top: 50%;
   left: 60%;
+  width: 20vw;
 
-  #login {
-    width: 10vw;
+  #gapi-button {
+    display: block;
+    width: 15vw;
+    height: auto;
+    margin: 10px;
+    background-color: rgb(0, 89, 255);
+  }
+
+  #tarnished-button {
+    display: block;
+    width: 15vw;
+    height: auto;
     background-color: #222;
     color: #fff;
     border: 1px solid #AAA;
