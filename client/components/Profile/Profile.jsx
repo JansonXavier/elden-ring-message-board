@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthDetails";
 import { PathContext } from '../../contexts/pathDetails'
 import './Profile.scss'
 
 const Profile = () => {
-  const [auth, setAuth] = useContext(AuthContext)
   const setPath = useContext(PathContext)
 
   const handleSignOut = () => {
@@ -13,11 +11,9 @@ const Profile = () => {
     setPath('/');
   }
 
-  const name = auth.currentUser?.get().getBasicProfile()?.getName() || 'tarnished'
-
   return (
     <div id='profile-background'>
-      <h2>{name}</h2>
+      <h2>Tarnished</h2>
       <button onClick={() => {
         setPath('/home')
       }}>Home</button>

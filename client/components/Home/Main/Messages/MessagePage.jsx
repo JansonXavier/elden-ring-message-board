@@ -10,23 +10,37 @@ const Messages = () => {
   const _id = useContext(CurThreadContext)[0]
   const [messages, setMessages] = useState([]);
 
-  // get current thread
   useEffect(() => {
+    // get current thread
+    getThread()
+
+    // get all messages for current thread
+    getMessages()
+  }, [])
+
+  // Set scroll position to bottom
+  useEffect(() => {
+    const messageBox = document.querySelector('.message-box');
+    messageBox.scrollTop = messageBox.scrollHeight;
+  }, [messages])
+
+  const getThread = () => {
     fetch('/api/threads/' + _id)
       .then(res => res.json())
       .then(data => {
         setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={data} />)
       })
       .catch(err => console.log(err));
+  }
 
+  const getMessages = () => {
     fetch('/api/messages/' + _id)
       .then(res => res.json())
       .then(data => {
         setMessages(data)
       })
       .catch(err => console.log(err));
-  
-  }, [])
+  }
 
   // post message form text field
   const handleClick = () => {
@@ -42,7 +56,7 @@ const Messages = () => {
 
     const body = {
       message: value,
-      author: 'anonymous',
+      author: 'tarnished',
       date: date.toLocaleDateString(),
       thread: _id
     }
@@ -54,8 +68,6 @@ const Messages = () => {
       },
       body: JSON.stringify(body)
     }
-
-    console.log(messages)
 
     fetch('/api/message', options)
       .then(res => res.json())

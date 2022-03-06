@@ -20,7 +20,7 @@ const ThreadList = () => {
 
     const body = {
       topic: value,
-      created_by: 'anonymous',
+      created_by: 'tarnished',
       num_msgs: 0,
     }
 
