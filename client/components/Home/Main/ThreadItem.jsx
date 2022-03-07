@@ -20,7 +20,7 @@ const ThreadItem = (props) => {
   return (
     <>
     <div className='thread-item' style={{backgroundColor: props.colour % 2 ? '#888' : '#999'}}>
-      <p className='thread-topic' onClick={() => {setPath('/home/messages'); setCurThread(_id)}}>{topic}</p>
+      <p className='thread-topic' onClick={() => {setPath('/home/messages'); setCurThread(props.thread)}}>{topic}</p>
       <p className='thread-author'>{created_by}</p>
       <p className='thread-num-msgs'>{num_msgs}</p>
       <button className='delete' onClick={handleClick}>Delete</button>

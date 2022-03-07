@@ -6,8 +6,6 @@ const Profile = () => {
   const setPath = useContext(PathContext)
 
   const handleSignOut = () => {
-    console.log(auth.signOut());
-    setAuth(auth)
     setPath('/');
   }
 

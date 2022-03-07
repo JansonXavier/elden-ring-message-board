@@ -32,9 +32,9 @@ const ThreadList = () => {
       body: JSON.stringify(body)
     }
 
-    fetch('/api/category/' + category, options)
+    fetch('/api/thread/' + category, options)
       .then(res => res.json())
-      .then(data => setThreads(data))
+      .then(data => setThreads((threads) => [...threads, data]))
       .catch(err => console.log(err));
   }
 

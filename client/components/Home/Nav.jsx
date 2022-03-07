@@ -9,7 +9,7 @@ const Nav = () => {
 
   const handleClick = (category) => {
     setCategory(category)
-    setPath('Home')
+    setPath('home')
   }
 
   return (

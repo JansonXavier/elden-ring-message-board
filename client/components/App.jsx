@@ -6,11 +6,9 @@ import Home from "./Home/Home";
 import ThreadList from "./Home/Main/ThreadList";
 import Messages from "./Home/Main/Messages/MessagePage";
 import Profile from "./Profile/Profile";
-import { AuthContext } from "../contexts/AuthDetails";
 
 const App = () => {
   // Make a default user for guests
-  const [auth, setAuth] = useState('tarnished');
   const [path, setPath] = useState('');
   const navigate = useNavigate();
 
@@ -21,7 +19,6 @@ const App = () => {
 
   return (
     <div className="app">
-      <AuthContext.Provider value={[auth, setAuth]}>
       <PathContext.Provider value={setPath}>
           <Routes>
             <Route path="/" element={<Login />} />
@@ -32,7 +29,6 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
           </Routes>
       </PathContext.Provider>
-      </AuthContext.Provider>
     </div>
   );
 }

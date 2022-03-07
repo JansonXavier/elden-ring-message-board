@@ -2,20 +2,6 @@ const { Thread } = require('../models/eldenRingModels');
 
 const threadController = {};
 
-threadController.getThread = (req, res, next) => {
-  const { _id } = req.params;
-
-  Thread.findOne({_id}, (err, thread) => {
-    if (err) return next({
-      log: `Error getting thread in threadController.getThread: ${err}`,
-      message: { err: 'Error getting thread' }, 
-    })
-
-    res.locals.thread = thread
-    return next();
-  })
-}
-
 threadController.getThreads = (req, res, next) => {
   const { category } = req.params;
 
@@ -31,10 +17,10 @@ threadController.getThreads = (req, res, next) => {
 }
 
 threadController.addThread = (req, res, next) => {
-  const { topic, created_by, num_msgs, last_post, msgs } = req.body;
+  const { topic, created_by, num_msgs } = req.body;
   const category = req.params.category;
 
-  Thread.create({topic, created_by, num_msgs, last_post, msgs, category}, (err, thread) => {
+  Thread.create({topic, created_by, num_msgs, category}, (err, thread) => {
     if (err) return next({
       log: `Error creating thread in threadController.addThread: ${err}`,
       message: { err: 'Error creating thread' }, 
@@ -45,6 +31,21 @@ threadController.addThread = (req, res, next) => {
   })
 }
 
+threadController.updateThread = (req, res, next) => {
+  const { num_msgs, thread } = req.body;
+
+  Thread.findOneAndUpdate({_id: thread}, { $inc: { num_msgs: 1 } }, (err, thread) => {
+    if (err) return next({
+      log: `Error updating thread in threadController.updateThread: ${err}`,
+      message: { err: 'Error updating thread' }, 
+    });
+
+    console.log(thread);
+
+    res.locals.thread = thread;
+    return next();
+  });
+};
 
 threadController.deleteThread = (req, res, next) => {
   console.log('deleting thread')

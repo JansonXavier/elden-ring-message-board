@@ -4,15 +4,17 @@ import ThreadItem from "../ThreadItem";
 import MessageBox from './MessageBox';
 import InputField from "./InputField";
 import './MessagePage.css'
+import { ThreadContext } from "../../../../contexts/threadDetails";
 
 const Messages = () => {
+  const threads = useContext(ThreadContext)[0];
   const [mainThread, setMainThread] = useState(null);
-  const _id = useContext(CurThreadContext)[0]
+  const { _id } = useContext(CurThreadContext)[0]
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     // get current thread
-    getThread()
+    setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={threads.filter((thread) => thread._id === _id)[0]} />)
 
     // get all messages for current thread
     getMessages()
@@ -24,17 +26,8 @@ const Messages = () => {
     messageBox.scrollTop = messageBox.scrollHeight;
   }, [messages])
 
-  const getThread = () => {
-    fetch('/api/threads/' + _id)
-      .then(res => res.json())
-      .then(data => {
-        setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={data} />)
-      })
-      .catch(err => console.log(err));
-  }
-
   const getMessages = () => {
-    fetch('/api/messages/' + _id)
+    fetch('/api/message/' + _id)
       .then(res => res.json())
       .then(data => {
         setMessages(data)
@@ -42,7 +35,7 @@ const Messages = () => {
       .catch(err => console.log(err));
   }
 
-  // post message form text field
+  // post message from text field
   const handleClick = () => {
     const { value } = document.getElementById('message-input')
     document.getElementById('message-input').value = '';
@@ -72,6 +65,7 @@ const Messages = () => {
     fetch('/api/message', options)
       .then(res => res.json())
       .then(data => setMessages([...messages, data]))
+      .then(() => setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={threads.filter((thread) => thread._id === _id)[0]} />))
       .catch(err => console.log(err));
   }
 
