@@ -31,4 +31,17 @@ messageController.addMessage = (req, res, next) => {
   })
 }
 
+messageController.deleteMessages = (req, res, next) => {
+  const { _id } = req.params;
+
+  Message.deleteMany({thread: _id}, (err, messages) => {
+    if (err) return next({
+      log: `Error deleting messages in messageController.deleteMessages: ${err}`,
+      message: { err: 'Error deleting messages' }, 
+    })
+
+    return next();
+  })
+}
+
 module.exports = messageController;

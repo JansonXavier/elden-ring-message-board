@@ -12,9 +12,7 @@ const Home = () => {
   const [curThread, setCurThread] = useState('');
 
   useEffect(() => {
-    const address = '/api/category/' + category
-
-    fetch(address)
+    fetch('/api/category/' + category)
     .then(res => res.json())
     .then(data => {
       setThreads(data);

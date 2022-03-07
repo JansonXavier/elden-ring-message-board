@@ -3,9 +3,9 @@ const { Thread } = require('../models/eldenRingModels');
 const threadController = {};
 
 threadController.getThread = (req, res, next) => {
-  const { id } = req.params;
+  const { _id } = req.params;
 
-  Thread.findOne({_id: id}, (err, thread) => {
+  Thread.findOne({_id}, (err, thread) => {
     if (err) return next({
       log: `Error getting thread in threadController.getThread: ${err}`,
       message: { err: 'Error getting thread' }, 
@@ -38,6 +38,22 @@ threadController.addThread = (req, res, next) => {
     if (err) return next({
       log: `Error creating thread in threadController.addThread: ${err}`,
       message: { err: 'Error creating thread' }, 
+    })
+
+    res.locals.thread = thread;
+    return next();
+  })
+}
+
+
+threadController.deleteThread = (req, res, next) => {
+  console.log('deleting thread')
+  const { _id } = req.params;
+
+  Thread.deleteOne({_id}, (err, thread) => {
+    if (err) return next({
+      log: `Error deleting thread in threadController.deleteThread: ${err}`,
+      message: { err: 'Error deleting thread' }, 
     })
 
     res.locals.thread = thread;

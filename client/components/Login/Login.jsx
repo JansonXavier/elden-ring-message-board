@@ -9,8 +9,7 @@ const Login = () => {
   return (
     <div className='background' style={{backgroundImage: `url(${backgroundImage})`}}>
         <div className="login-block">
-          {/* <GoogleAuth /> */}
-          <button id="tarnished-button" onClick={() => setPath('/home')}>Continue as Tarnished</button>
+          <button id="tarnished-button" onClick={() => setPath('/home')}>Fingers ahead</button>
         </div>
     </div>
   )
