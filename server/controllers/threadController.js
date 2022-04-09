@@ -17,10 +17,10 @@ threadController.getThreads = (req, res, next) => {
 }
 
 threadController.addThread = (req, res, next) => {
-  const { topic, created_by, num_msgs } = req.body;
+  const { topic, created_by } = req.body;
   const category = req.params.category;
 
-  Thread.create({topic, created_by, num_msgs, category}, (err, thread) => {
+  Thread.create({topic, created_by, num_msgs: 0, category}, (err, thread) => {
     if (err) return next({
       log: `Error creating thread in threadController.addThread: ${err}`,
       message: { err: 'Error creating thread' }, 
@@ -32,7 +32,7 @@ threadController.addThread = (req, res, next) => {
 }
 
 threadController.updateThread = (req, res, next) => {
-  const { num_msgs, thread } = req.body;
+  const { thread } = req.body;
 
   Thread.findOneAndUpdate({_id: thread}, { $inc: { num_msgs: 1 } }, (err, thread) => {
     if (err) return next({

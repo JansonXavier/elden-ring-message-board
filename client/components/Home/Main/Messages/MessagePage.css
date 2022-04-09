@@ -23,6 +23,9 @@
 }
 
 .msg {
+  display: grid;
+  grid-template-columns: 90% 10%;
+  grid-template-rows: 70% 30%;
   width: 100%;
   background-color: rgba(26, 117, 126, 0.534);
   border: 1px solid rgb(0, 0, 0);
@@ -30,10 +33,19 @@
   margin-bottom: 2px;
 }
 
+.message-text {
+  padding-left: 1%;
+}
+
+.message-delete {
+  margin-top: 5%;
+  margin-left: 27%;
+  width: 50px
+}
+
 .message-author {
   font-size: 17px;
   display: inline;
-  margin-right: 80%
 }
 
 .message-date {

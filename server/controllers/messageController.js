@@ -40,6 +40,22 @@ messageController.deleteMessages = (req, res, next) => {
       message: { err: 'Error deleting messages' }, 
     })
 
+    res.locals.messages = messages
+    return next();
+  })
+}
+
+messageController.deleteMessage = (req, res, next) => {
+  console.log('delete msg is running', req.params._id)
+  const { _id } = req.params;
+
+  Message.deleteMany({_id}, (err, message) => {
+    if (err) return next({
+      log: `Error deleting message in messageController.deleteMessage: ${err}`,
+      message: { err: 'Error deleting message' }, 
+    })
+
+    res.locals.message = message
     return next();
   })
 }

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { AuthContext } from '../../contexts/AuthDetails';
-import { PathContext } from '../../contexts/pathDetails';
+import { AuthContext, PathContext } from '../../context'
 
 const GoogleAuth = () => {
   const [auth, setAuth] = useContext(AuthContext);

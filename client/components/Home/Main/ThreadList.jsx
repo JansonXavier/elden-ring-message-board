@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { CategoryContext } from "../../../contexts/categoryDetails";
-import { ThreadContext } from "../../../contexts/threadDetails";
+import { CategoryContext, ThreadContext } from "../../../context"
 import ThreadItem from "./ThreadItem";
 import './ThreadList.scss'
 
@@ -21,7 +20,6 @@ const ThreadList = () => {
     const body = {
       topic: value,
       created_by: 'tarnished',
-      num_msgs: 0,
     }
 
     const options = {

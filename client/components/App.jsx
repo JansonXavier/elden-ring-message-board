@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { PathContext } from '../contexts/pathDetails'
+import { PathContext } from '../context'
 import Login from "./Login/Login";
 import Home from "./Home/Home";
 import ThreadList from "./Home/Main/ThreadList";

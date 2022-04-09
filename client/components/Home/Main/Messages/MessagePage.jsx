@@ -1,10 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-import { CurThreadContext } from "../../../../contexts/curThreadDetails";
+import { CurThreadContext, ThreadContext } from "../../../../context";
 import ThreadItem from "../ThreadItem";
 import MessageBox from './MessageBox';
 import InputField from "./InputField";
 import './MessagePage.css'
-import { ThreadContext } from "../../../../contexts/threadDetails";
 
 const Messages = () => {
   const threads = useContext(ThreadContext)[0];
@@ -36,7 +35,7 @@ const Messages = () => {
   }
 
   // post message from text field
-  const handleClick = () => {
+  const postMessage = () => {
     const { value } = document.getElementById('message-input')
     document.getElementById('message-input').value = '';
 
@@ -64,17 +63,20 @@ const Messages = () => {
 
     fetch('/api/message', options)
       .then(res => res.json())
-      .then(data => setMessages([...messages, data]))
-      .then(() => setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={threads.filter((thread) => thread._id === _id)[0]} />))
+      .then(data => {
+        const { topic, created_by, num_msgs, _id } = data.thread
+        setMessages([...messages, data.message])
+        setMainThread(<ThreadItem key={`threadItem${0}`} colour={0} thread={{ topic, created_by, num_msgs: num_msgs + 1, _id }} />)
+      })
       .catch(err => console.log(err));
   }
 
   return (
     <div id="message-container">
       {mainThread}
-      <MessageBox messages={messages}/>
-      <InputField />
-      <button id="message-button" onClick={handleClick}>Submit Message</button>
+      <MessageBox messages={messages} setMessages={setMessages}/>
+      <InputField postMessage={postMessage}/>
+      <button id="message-button" onClick={postMessage}>Submit Message</button>
     </div>
   )
 }

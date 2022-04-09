@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { CategoryContext } from "../../contexts/categoryDetails";
-import { PathContext } from '../../contexts/pathDetails'
+import { CategoryContext, PathContext } from "../../context"
 import './Nav.scss'
 
 const Nav = () => {
@@ -8,8 +7,7 @@ const Nav = () => {
   const setCategory = useContext(CategoryContext)[1];
 
   const handleClick = (category) => {
-    setCategory(category)
-    setPath('home')
+    setCategory([category])
   }
 
   return (
