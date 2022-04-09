@@ -4,20 +4,29 @@ import './Nav.scss'
 
 const Nav = () => {
   const setPath = useContext(PathContext);
-  const setCategory = useContext(CategoryContext)[1];
+  const [category, setCategory] = useContext(CategoryContext);
 
-  const handleClick = (category) => {
-    setCategory([category])
+  const handleClick = (selectedCategory) => {
+    if (category === selectedCategory) return;
+    setCategory([selectedCategory])
   }
+
+  const setClassName = name => {
+    return category[0] === name ? 'curCategory' : '';
+  }
+
+  const categories = (
+    <div className="categories">
+      <button className={setClassName('Enemies')} onClick={() => handleClick('Enemies')}>Enemies</button>
+      <button className={setClassName('Builds')} onClick={() => handleClick('Builds')}>Builds</button>
+      <button className={setClassName('Lore')} onClick={() => handleClick('Lore')}>Lore</button>
+      <button className={setClassName('Groups')} onClick={() => handleClick('Groups')}>Groups</button>
+    </div>
+  )
 
   return (
     <nav>
-      <div className="categories">
-      <button onClick={() => handleClick('Enemies')}>Enemies</button>
-      <button onClick={() => handleClick('Builds')}>Builds</button>
-      <button onClick={() => handleClick('Lore')}>Lore</button>
-      <button onClick={() => handleClick('Groups')}>Groups</button>
-      </div>
+      {categories}
       <button id='profile' onClick={() => setPath('/profile')}>Profile</button>
     </nav>
   )

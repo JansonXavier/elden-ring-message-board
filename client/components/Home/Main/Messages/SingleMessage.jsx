@@ -3,8 +3,6 @@ import React from 'react';
 const SingleMessage = (props) => {
   const { message, author, date, _id } = props.msg;
 
-  const setCategory = useContext(CategoryContext)[1];
-
   // create delete method functionaluty
   const deleteMessage = () => {
     console.log('deleting message','api/message/'+_id);
