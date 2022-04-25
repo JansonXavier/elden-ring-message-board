@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div className='background' style={{backgroundImage: `url(${backgroundImage})`}}>
         <div className="login-block">
-          <button id="tarnished-button" onClick={() => setPath('/home')}>Fingers ahead</button>
+          <button id="tarnished-button" onClick={() => setPath('/home')}>Continue as Tarnished</button>
           <GoogleAuth />
         </div>
     </div>

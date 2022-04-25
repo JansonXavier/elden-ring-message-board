@@ -18,19 +18,25 @@
     height: auto;
     margin: 10px;
     background-color: rgb(0, 89, 255);
+
+    &:hover {
+      background-color: rgb(0, 55, 255);
+    }
   }
 
   #tarnished-button {
     display: block;
-    width: 10vw;
+    position: relative;
+    left: 10px;
+    width: 15vw;
     height: auto;
     background-color: #222;
     color: #fff;
     border: 1px solid #AAA;
     border-radius: 2vw;
 
-    &hover {
-      background-color: #555;
+    &:hover {
+      background-color: #111;
     }
   }
 }

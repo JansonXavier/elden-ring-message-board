@@ -48,7 +48,6 @@ threadController.updateThread = (req, res, next) => {
 };
 
 threadController.deleteThread = (req, res, next) => {
-  console.log('deleting thread')
   const { _id } = req.params;
 
   Thread.deleteOne({_id}, (err, thread) => {
