@@ -10,16 +10,6 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api', apiRouter);
 
-app.get('/home/:anything', (req, res) => {
-  console.log('redirecting')
-  return res.redirect('/')
-})
-
-app.get('/profile', (req, res) => {
-  console.log('redirecting')
-  return res.redirect('/')
-})
-
 // handle delete message here because home is getting added to the path of my fetch req
 app.delete('/home/api/message/:_id', deleteMessage, (req, res) => {
   return res.status(200).json({ message: res.locals.message })

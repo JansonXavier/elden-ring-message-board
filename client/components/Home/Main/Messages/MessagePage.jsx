@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import { CurThreadContext, ThreadContext } from "../../../../context";
+import { CurThreadContext, ThreadContext, AuthContext } from "../../../../context";
 import ThreadItem from "../ThreadItem";
 import MessageBox from './MessageBox';
 import InputField from "./InputField";
 import './MessagePage.css'
 
 const Messages = () => {
+  const auth = useContext(AuthContext)[0];
   const threads = useContext(ThreadContext)[0];
   const [mainThread, setMainThread] = useState(null);
   const { _id } = useContext(CurThreadContext)[0]
@@ -48,7 +49,7 @@ const Messages = () => {
 
     const body = {
       message: value,
-      author: 'tarnished',
+      author: auth ? auth.currentUser.get().getBasicProfile().getName() : 'Tarnished',
       date: date.toLocaleDateString(),
       thread: _id
     }
