@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { PathContext, AuthContext } from '../../context'
+import eldenRingIcon from '../../../assets/elden_ring_icon.png'
 import './Profile.scss'
 
 const Profile = () => {
@@ -20,6 +21,7 @@ const Profile = () => {
 
   return (
     <div id='profile-background'>
+      <img id="profile-picture" src={eldenRingIcon} />
       <h2>{ auth ? auth.currentUser.get().getBasicProfile().getName() : 'Tarnished' }</h2>
       <button onClick={() => {
         setPath('/home')

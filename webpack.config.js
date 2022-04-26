@@ -10,6 +10,7 @@ module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   plugins: [new HtmlWebpackPlugin({
     template: "./src/client/index.html",
+    favicon: "./src/assets/elden_ring_icon.png"
   })],
   resolve: {
     modules: [__dirname, "src", "node_modules"],

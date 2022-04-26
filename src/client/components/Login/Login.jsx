@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { PathContext } from '../../context'
-import backgroundImage from './img2.jpeg'
+import backgroundImage from '../../../assets/elden_ring_background.jpeg'
 import GoogleAuth from "./GoogleAuth"
 import './Login.scss'
 
