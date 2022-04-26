@@ -2,9 +2,9 @@
   "name": "elden-ring",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "nodemon src/server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve --open"
   },
@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.0",
-    "nodemon": "^2.0.15",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.2"
@@ -28,6 +27,7 @@
     "html-webpack-plugin": "^5.5.0",
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.4",
+    "nodemon": "^2.0.15",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",
