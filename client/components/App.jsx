@@ -13,7 +13,6 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Navigate to home if they are already signed in
     navigate(path)
   }, [path])
 

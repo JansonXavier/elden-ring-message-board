@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { CategoryContext, ThreadContext } from "../../../context"
+import { AuthContext, CategoryContext, ThreadContext } from "../../../context"
 import ThreadItem from "./ThreadItem";
 import './ThreadList.scss'
 
 const ThreadList = () => {
+  const auth = useContext(AuthContext)[0];
   const category = useContext(CategoryContext)[0]
   const [threads, setThreads] = useContext(ThreadContext);
 
@@ -19,7 +20,7 @@ const ThreadList = () => {
 
     const body = {
       topic: value,
-      created_by: 'tarnished',
+      created_by: auth ? auth.currentUser.get().getBasicProfile().getName() : 'Tarnished',
     }
 
     const options = {
