@@ -40,8 +40,6 @@ threadController.updateThread = (req, res, next) => {
       message: { err: 'Error updating thread' }, 
     });
 
-    console.log(thread);
-
     res.locals.thread = thread;
     return next();
   });
