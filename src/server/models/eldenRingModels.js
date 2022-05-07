@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
-const dotenv = require('dotenv');
-dotenv.config();
 
-const MONGO_URI = process.env.DB_URI
+const MONGO_URI = 'mongodb+srv://jansonxavier159:rHYt9T5ScNHtCYU@cluster0.tuss7.mongodb.net/EldenRingMessageBoard?retryWrites=true&w=majority'
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
