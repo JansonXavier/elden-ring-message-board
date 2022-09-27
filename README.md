@@ -1,6 +1,6 @@
 # elden-ring-message-board
 Elden ring themed message board
 
-![](/client/images/logo/landing_page.png) 
-![](/client/images/logo/home_screeen.png) 
-![](/client/images/thread.png) 
+![](/src/assets/landing_page.png) 
+![](/src/assets/home_screeen.png) 
+![](/src/assets/thread.png) 
